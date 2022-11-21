@@ -25,7 +25,7 @@ public class BulletMove : MonoBehaviour
         Vector3 normal = this.transform.position - new Vector3(temp.x, temp.y, 0);
         normal.Normalize();
 
-        if (obj.tag == "Wall" || obj.tag == "Player")
+        if (obj.tag == "Wall" || obj.tag == "WallTop" || obj.tag == "Player")
         {
             Debug.Log("collision normal: " + normal.ToString());
             Reflect(normal);
