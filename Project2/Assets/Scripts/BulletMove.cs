@@ -16,7 +16,9 @@ public class BulletMove : MonoBehaviour
     void Update()
     {
         this.transform.position += speed * Time.deltaTime * direction;
+        
     }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,6 +33,20 @@ public class BulletMove : MonoBehaviour
             Reflect(normal);
         }
     }
+
+    private bool offScreenTop(float tolerance)
+    {
+        float height = Camera.main.rect.height / 2;
+        Debug.Log("height: " + height.ToString());
+        return (this.transform.position.y + tolerance > height);
+    }
+    private bool offScreenBot(float tolerance)
+    {
+        float height = Camera.main.rect.height / 2;
+        Debug.Log("height: " + height.ToString());
+        return (this.transform.position.y - tolerance < height);
+    }
+    
     void Reflect(Vector3 normal)
     {
         direction -= 2 * (Vector3.Dot(normal, direction)) * normal;
