@@ -27,8 +27,16 @@ public class BulletMove : MonoBehaviour
         Vector3 normal = this.transform.position - new Vector3(temp.x, temp.y, 0);
         normal.Normalize();
 
-        if (obj.tag == "Wall" || obj.tag == "WallTop" || obj.tag == "Player")
+        if (obj.tag == "Wall" || obj.tag == "WallTop")
         {
+            Debug.Log("collision normal: " + normal.ToString());
+            Reflect(normal);
+        }
+        if (obj.tag == "Player")
+        {
+            PaddleMove script = obj.GetComponent<PaddleMove>();
+            normal = new Vector3(script.direction.x*script.actualSpeed/5 + normal.x, normal.y*script.actualSpeed, 0);
+            normal.Normalize();
             Debug.Log("collision normal: " + normal.ToString());
             Reflect(normal);
         }
