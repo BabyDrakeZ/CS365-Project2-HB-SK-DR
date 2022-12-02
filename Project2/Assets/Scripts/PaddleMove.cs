@@ -8,6 +8,7 @@ public class PaddleMove : MonoBehaviour
     public float speed = 1;
     public float actualSpeed = 0;
     public float maxSpeed = 5;
+    public float bounds = 5;
     public float lerpConstant = 0.8f;
     // Start is called before the first frame update
     void Start()
@@ -20,14 +21,17 @@ public class PaddleMove : MonoBehaviour
     {
         actualSpeed = Mathf.Lerp(actualSpeed, getInput(), lerpConstant);
         if (Mathf.Abs(actualSpeed) < 0.01) actualSpeed = 0;
+        if (transform.position.x < -bounds && actualSpeed < 0) { actualSpeed = 0; }
+        if (transform.position.x > bounds && actualSpeed > 0) { actualSpeed = 0; }
         actualSpeed = Mathf.Clamp(actualSpeed, -maxSpeed, maxSpeed);
+
         this.transform.position += Vector3.right * actualSpeed * Time.deltaTime;
     }
     float getInput()
     {
         float push = 0;
-        bool left = (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow));
-        bool right = (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow));
+        bool left = (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && transform.position.x > -bounds;
+        bool right = (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && transform.position.x < bounds;
 
 
         if (left && right)

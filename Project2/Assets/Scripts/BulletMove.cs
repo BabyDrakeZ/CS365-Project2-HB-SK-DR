@@ -6,6 +6,8 @@ public class BulletMove : MonoBehaviour
 {
     public float speed;
     public Vector3 direction;
+    public float boundX = 20;
+    public float boundY = 8;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +17,21 @@ public class BulletMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (offScreenLeft(0.5f) && this.direction.x < 0)
+        {
+            Reflect(Vector2.right);
+            Debug.Log("offLeft");
+        }
+        if (offScreenRight(0.5f) && this.direction.x > 0)
+        {
+            Reflect(Vector2.left);
+            Debug.Log("offRight");
+        }
+        if (offScreenTop(0.5f) && this.direction.y > 0)
+        {
+            Reflect(Vector2.down);
+            Debug.Log("offTop");
+        }
         this.transform.position += speed * Time.deltaTime * direction;
         
     }
@@ -25,6 +42,7 @@ public class BulletMove : MonoBehaviour
         GameObject obj = collision.gameObject;
         Vector2 temp = collision.ClosestPoint(this.transform.position);
         Vector3 normal = this.transform.position - new Vector3(temp.x, temp.y, 0);
+        Debug.Log("collision normal: " + normal.ToString());
         normal.Normalize();
 
         if (obj.tag == "Wall" || obj.tag == "WallTop")
@@ -35,26 +53,31 @@ public class BulletMove : MonoBehaviour
         if (obj.tag == "Player")
         {
             PaddleMove script = obj.GetComponent<PaddleMove>();
-            normal = new Vector3(script.direction.x*script.actualSpeed/5 + normal.x, normal.y*script.actualSpeed, 0);
+            normal = new Vector3(script.actualSpeed + normal.x, 1, 0);
             normal.Normalize();
-            Debug.Log("collision normal: " + normal.ToString());
+            Debug.Log("collision normal2: " + normal.ToString());
             Reflect(normal);
+        }
+        if (obj.tag == "Brick")
+        {
+            Reflect(normal);
+            Destroy(obj);
         }
     }
 
-    private bool offScreenTop(float tolerance)
+    private bool offScreenRight(float tolerance = 0.5f)
     {
-        float height = Camera.main.rect.height / 2;
-        Debug.Log("height: " + height.ToString());
-        return (this.transform.position.y + tolerance > height);
+        return (this.transform.position.x + tolerance > boundX);
     }
-    private bool offScreenBot(float tolerance)
+    private bool offScreenLeft(float tolerance = 0.5f)
     {
-        float height = Camera.main.rect.height / 2;
-        Debug.Log("height: " + height.ToString());
-        return (this.transform.position.y - tolerance < height);
+        return (this.transform.position.x - tolerance < -boundX);
     }
-    
+    private bool offScreenTop(float tolerance = 0.5f)
+    {
+        return (this.transform.position.y + tolerance > boundY);
+    }
+
     void Reflect(Vector3 normal)
     {
         direction -= 2 * (Vector3.Dot(normal, direction)) * normal;
