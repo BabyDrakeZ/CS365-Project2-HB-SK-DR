@@ -7,6 +7,9 @@ TagManager:
   - Wall
   - WallTop
   - Brick
+  - Enemy
+  - ShootPoint
+  - Web
   layers:
   - Default
   - TransparentFX
