@@ -8,7 +8,6 @@ public class EnemyMove : MonoBehaviour
     public bool inCoolDown = false;
     public Vector2 direction;
 
-    private Vector2 rightEndpoint;
     // Start is called before the first frame update
     void Start()
     {
