@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public float speed = 6f;
+    public float delay = 3;
     public bool inCoolDown = false;
     public Vector2 direction;
 
@@ -39,23 +40,23 @@ public class EnemyMove : MonoBehaviour
     }
     IEnumerator CoolDown()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(delay*3);
         inCoolDown = false;
     }
     IEnumerator moveRight()
     {
         direction.x = 1;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(delay);
         direction.x = -1;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(delay);
         direction.x = 0;
     }
     IEnumerator moveLeft()
     {
         direction.x = -1;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(delay);
         direction.x = 1;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(delay);
         direction.x = 0;
     }
 }
