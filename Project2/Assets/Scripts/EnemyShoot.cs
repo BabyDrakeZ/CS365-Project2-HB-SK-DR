@@ -7,7 +7,6 @@ public class EnemyShoot : MonoBehaviour
 {
     //public GameObject 
     public GameObject ShootPoint;
-    public GameObject enemyBullet;
 
 
     private bool inCoolDown = false;
@@ -31,7 +30,7 @@ public class EnemyShoot : MonoBehaviour
                 //go.transform.SetPositionAndRotation(shootPoint.transform.position, shootPoint.transform.rotation);
                 go.transform.position = ShootPoint.transform.position;
                 go.transform.rotation = ShootPoint.transform.rotation;
-                EnemyBullet b = go.GetComponent<EnemyBullet>();
+                enemyBullet b = go.GetComponent<enemyBullet>();
                 b.speed = 5;
             }
 
