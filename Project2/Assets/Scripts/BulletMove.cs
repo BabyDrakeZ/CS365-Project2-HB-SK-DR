@@ -57,7 +57,7 @@ public class BulletMove : MonoBehaviour
             normal = new Vector3(script.actualSpeed + normal.x, 1, 0);
             normal.Normalize();
             Debug.Log("collision normal2: " + normal.ToString());
-            this.direction = new Vector3(this.direction.x, -this.direction.y, 0);
+            Reflect(normal);
         }
         if (obj.tag == "Brick")
         {
