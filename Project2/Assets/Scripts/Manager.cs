@@ -6,11 +6,16 @@ public class Manager : MonoBehaviour
 {
     int score1 = 0;
     int score2 = 0;
+    GameObject bullet;
     // Start is called before the first frame update
     void Start()
     {
         
     }
+    void spawnBullet()
+    {
+    }
+
 
     // Update is called once per frame
     void Update()

@@ -8,6 +8,7 @@ public class BulletMove : MonoBehaviour
     public Vector3 direction;
     public float boundX = 20;
     public float boundY = 8;
+    public Manager manager;
     // Start is called before the first frame update
     void Start()
     {

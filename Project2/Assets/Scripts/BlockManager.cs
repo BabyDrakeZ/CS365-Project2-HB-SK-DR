@@ -5,8 +5,9 @@ using UnityEngine;
 public class BlockManager : MonoBehaviour
 {
     //DEFINES A COLUMN OF BRICKS
-    public float width = 3.2f;
-    public float height = 0.8f;
+    public float width = 3.3f;
+    public float height = 0.9f;
+    public float padding = 0.1f;
     public float offset = 0;
     public int numColumns = 6;
     public GameObject[] bricks;
@@ -23,7 +24,7 @@ public class BlockManager : MonoBehaviour
                     GameObject brick = Instantiate(bricks[j]);
                     brick.transform.SetParent(this.transform);
                     Debug.Log(brick.ToString() + "[" + i.ToString() + "," + j.ToString() + "]");
-                    brick.transform.position = new Vector3(this.transform.position.x + i * width, this.transform.position.y - j * height, 0);
+                    brick.transform.position = new Vector3(this.transform.position.x + i * (width+padding), this.transform.position.y - j * (height+padding), 0);
                 } catch { Debug.Log("Failed to Instantiate[" + i.ToString() + "," + j.ToString() + "]"); }
             }
         }
