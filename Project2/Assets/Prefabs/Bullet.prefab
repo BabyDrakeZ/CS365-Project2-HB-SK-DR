@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4ccc01c5743cc4483b87b4c79914b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 12
   direction: {x: 0, y: 0, z: 0}
   boundX: 25
   boundY: 14
@@ -184,7 +184,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.627451, g: 1, b: 0.9607843, a: 1}
+  m_Color: {r: 0.9198113, g: 1, b: 0.9915591, a: 1}
   m_Intensity: 6
   m_Range: 12
   m_SpotAngle: 30
