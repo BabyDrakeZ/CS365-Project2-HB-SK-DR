@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
 
-    public GameObject enemyBullet;
     public Vector2 direction;
     public float speed = 5f;
 
@@ -37,29 +36,39 @@ public class EnemyBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject gameObject = collision.gameObject;
+        GameObject obj = collision.gameObject;
+        Vector2 temp = collision.ClosestPoint(this.transform.position);
+        Vector3 normal = this.transform.position - new Vector3(temp.x, temp.y, 0);
 
         if (gameObject.tag == "Boundary")
         {
             ImpactPS = Instantiate(ImpactPS);
             ImpactPS.transform.position = BulletPosition;
             var euler = transform.eulerAngles;
-            euler.z = enemyBullet.transform.rotation.eulerAngles.z;
+            euler.z = this.transform.rotation.eulerAngles.z;
             ImpactPS.transform.eulerAngles = euler;
             ImpactPS.Play();
             Destroy(this.gameObject);
         }
+
+
 
         if (gameObject.tag == "Player")
         {
             ImpactPS = Instantiate(ImpactPS);
             ImpactPS.transform.position = BulletPosition;
             var euler = transform.eulerAngles;
-            euler.z = enemyBullet.transform.rotation.eulerAngles.z;
+            euler.z = this.transform.rotation.eulerAngles.z;
             ImpactPS.transform.eulerAngles = euler;
             ImpactPS.Play();
 
             Destroy(this.gameObject);
 
         }
+    }
+    void Reflect(Vector3 normal)
+    {
+        //direction -= 2 * (Vector3.Dot(normal, direction)) * normal;
+        Debug.Log("Reflecting " + direction.ToString());
     }
 }
