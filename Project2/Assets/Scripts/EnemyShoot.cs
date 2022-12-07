@@ -10,7 +10,7 @@ public class EnemyShoot : MonoBehaviour
     public GameObject enemyBullet;
 
     private bool inCoolDown = false;
-    private int coolDown = 5;
+    public float coolDown = 5;
     void Start()
     {
 

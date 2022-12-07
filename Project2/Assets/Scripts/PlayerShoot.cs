@@ -40,6 +40,7 @@ public class PlayerShoot : MonoBehaviour
     Vector3 Direction()
     {
         Vector3 dir = Vector3.up + new Vector3(paddle.actualSpeed,0, 0)/angleDivisor;
+        dir.Normalize();
         return dir;
     }
     private void BulletReset()

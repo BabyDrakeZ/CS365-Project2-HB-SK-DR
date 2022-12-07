@@ -8,6 +8,7 @@ public class BulletMove : MonoBehaviour
     public Vector3 direction;
     public float boundX = 20;
     public float boundY = 8;
+    public float english = 1;
     public Manager manager;
     // Start is called before the first frame update
     void Start()
@@ -54,10 +55,10 @@ public class BulletMove : MonoBehaviour
         if (obj.tag == "Player")
         {
             PaddleMove script = obj.GetComponent<PaddleMove>();
-            normal = new Vector3(script.actualSpeed + normal.x, 1, 0);
-            normal.Normalize();
+            //normal = new Vector3(script.actualSpeed + normal.x + obj.transform.position.x*english, 1, 0);
+            //normal.Normalize();
             Debug.Log("collision normal2: " + normal.ToString());
-            this.direction = new Vector3(this.direction.x, -this.direction.y, 0);
+            this.direction = new Vector3(this.direction.x + (this.transform.position.x-obj.transform.position.x)*english, -this.direction.y, 0).normalized;
         }
         if (obj.tag == "Brick")
         {
