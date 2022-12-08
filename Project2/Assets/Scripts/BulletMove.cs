@@ -9,11 +9,14 @@ public class BulletMove : MonoBehaviour
     public float boundX = 20;
     public float boundY = 8;
     public float english = 1;
+    public float streakDecay = 2;
+    private int streak = 0;
+    public int streakMax = 5;
     public Manager manager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        DecayStreak();
     }
 
     // Update is called once per frame
@@ -34,7 +37,7 @@ public class BulletMove : MonoBehaviour
             Reflect(Vector2.down);
             Debug.Log("offTop");
         }
-        this.transform.position += speed * Time.deltaTime * direction;
+        this.transform.position += speed * (1+(streak/speed)) * Time.deltaTime * direction;
         
     }
     
@@ -64,6 +67,8 @@ public class BulletMove : MonoBehaviour
         {
             Reflect(normal);
             Destroy(obj);
+            if (streak < streakMax)
+                streak++;
         }
     }
 
@@ -84,5 +89,15 @@ public class BulletMove : MonoBehaviour
     {
         direction -= 2 * (Vector3.Dot(normal, direction)) * normal;
         Debug.Log("Reflecting " + direction.ToString());
+    }
+    IEnumerator DecayStreak()
+    {
+        //every second decrease streak by 1
+        yield return new WaitForSeconds(streakDecay);
+        if (streak > 0)
+        {
+            streak--;
+        }
+        StartCoroutine(DecayStreak());
     }
 }

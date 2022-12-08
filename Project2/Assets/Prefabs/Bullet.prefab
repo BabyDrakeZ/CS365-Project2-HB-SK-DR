@@ -105,6 +105,8 @@ MonoBehaviour:
   boundX: 25
   boundY: 14
   english: 0.5
+  streakDecay: 1
+  streakMax: 5
   manager: {fileID: 0}
 --- !u!50 &3088779248159068234
 Rigidbody2D:

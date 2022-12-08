@@ -105,7 +105,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   speed: 28
   actualSpeed: 0
-  maxSpeed: 18
+  maxSpeed: 25
   bounds: 23
   lerpConstant: 0.05
 --- !u!114 &7592193383105125999
