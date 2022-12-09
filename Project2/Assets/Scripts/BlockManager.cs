@@ -11,9 +11,11 @@ public class BlockManager : MonoBehaviour
     public float offset = 0;
     public int numColumns = 6;
     public GameObject[] bricks;
+    public PaddleMove paddle;
     // Start is called before the first frame update
     void Start()
     {
+        paddle = GameObject.FindGameObjectWithTag("Player").GetComponent<PaddleMove>();
         //render bricks from top left corner (where this manager is)
         for (int i = 0; i < numColumns; i++)
         {
@@ -34,6 +36,9 @@ public class BlockManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (paddle.GetComponent<PaddleMove>().blocksBroken >= 108)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
+        }
     }
 }
