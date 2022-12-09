@@ -472,8 +472,8 @@ GameObject:
   - component: {fileID: 2028912433}
   - component: {fileID: 2028912432}
   m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_Name: BLACKOUT
+  m_TagString: Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
