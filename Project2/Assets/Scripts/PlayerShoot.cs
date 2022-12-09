@@ -50,7 +50,7 @@ public class PlayerShoot : MonoBehaviour
         dir.Normalize();
         return dir;
     }
-    private void BulletReset()
+    public void BulletReset()
     {
         if (hasShot)
         {

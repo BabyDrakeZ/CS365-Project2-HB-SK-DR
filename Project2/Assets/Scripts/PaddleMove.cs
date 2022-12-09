@@ -15,6 +15,7 @@ public class PaddleMove : MonoBehaviour
     private float maxLight;
     private bool lightOff = false;
     public float blinkTime = 0.5f;
+    public float duration = 5;
     private AudioSource blastSound;
     // Start is called before the first frame update
     void Start()
@@ -74,7 +75,7 @@ public class PaddleMove : MonoBehaviour
     {
         disabled = true;
         StartCoroutine(Blink());
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(duration);
         disabled = false;
         lightOff = false;
         yield return new WaitForSeconds(blinkTime + 0.1f);

@@ -12,12 +12,16 @@ public class BulletMove : MonoBehaviour
     public float streakDecay = 2;
     private int streak = 0;
     public int streakMax = 5;
-    public Manager manager;
     public AudioSource bounceSound;
+    public PaddleMove paddle;
+    public PlayerShoot shoot;
     // Start is called before the first frame update
     void Start()
     {
-        DecayStreak();
+        paddle = GameObject.FindGameObjectWithTag("Player").GetComponent<PaddleMove>();
+        shoot = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShoot>();
+
+        StartCoroutine(DecayStreak());
         bounceSound = this.GetComponent<AudioSource>();
     }
 
@@ -39,10 +43,21 @@ public class BulletMove : MonoBehaviour
             Reflect(Vector2.down);
             Debug.Log("offTop");
         }
+        if (offScreenBot(0.5f) && this.direction.y < 0)
+        {
+            paddle.Disable();
+            StartCoroutine(resetBullet());
+            Debug.Log("off");
+        }
         this.transform.position += speed * (1+(streak/speed)) * Time.deltaTime * direction;
         
     }
     
+    IEnumerator resetBullet()
+    {
+        yield return new WaitForSeconds(paddle.duration-paddle.blinkTime*1.75f);
+        shoot.BulletReset();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -88,6 +103,10 @@ public class BulletMove : MonoBehaviour
     private bool offScreenTop(float tolerance = 0.5f)
     {
         return (this.transform.position.y + tolerance > boundY);
+    }
+    private bool offScreenBot(float tolerance = 0.5f)
+    {
+        return (this.transform.position.y - tolerance < -boundY);
     }
 
     void Reflect(Vector3 normal)

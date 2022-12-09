@@ -13,7 +13,10 @@ public class Constants : MonoBehaviour
     void Start()
     {
         C = this;
-        
+        if (PlayerPrefs.HasKey("highTime"))
+        {
+            highTime = PlayerPrefs.GetFloat("highTime");
+        }
     }
 
         // Update is called once per frame
