@@ -106,10 +106,11 @@ MonoBehaviour:
   boundX: 25
   boundY: 14
   english: 0.5
-  streakDecay: 1
+  streakDecay: 2
   streakMax: 7
-  manager: {fileID: 0}
   bounceSound: {fileID: 0}
+  paddle: {fileID: 0}
+  shoot: {fileID: 0}
 --- !u!50 &3088779248159068234
 Rigidbody2D:
   serializedVersion: 4

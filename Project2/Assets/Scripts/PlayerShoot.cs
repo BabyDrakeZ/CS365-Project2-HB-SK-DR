@@ -24,12 +24,7 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        stopwatch.text = time.ToString("0.00");
-        bool bulletDestroyCase = Input.GetKey(KeyCode.Return); //Set to occur when bullet is off screne.
-        if (bulletDestroyCase)
-            BulletReset();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !paddle.disabled)
         {
             Shoot();
         }
