@@ -17,6 +17,7 @@ public class PaddleMove : MonoBehaviour
     public float blinkTime = 0.5f;
     public float duration = 5;
     private AudioSource blastSound;
+    public int blocksBroken=0;
     // Start is called before the first frame update
     void Start()
     {
