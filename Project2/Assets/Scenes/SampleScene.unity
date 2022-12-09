@@ -883,7 +883,7 @@ MonoBehaviour:
   ShootPoint: {fileID: 243373042}
   enemyBullet: {fileID: 8485133360165863751, guid: 2846694f95316f8479d0de76977923f3, type: 3}
   coolDown: 0.5
-  difficultyRate: 5
+  difficultyRate: 12
   coolDownAcceleration: 0.005
 --- !u!1 &1299174756
 GameObject:
@@ -1279,7 +1279,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f4f8da45e5221e043b3b752596069e68, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.725
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1503,6 +1503,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -173719426182873361, guid: 10fafe517c4f54b4ab27c8a3655371ef, type: 3}
+      propertyPath: m_Volume
+      value: 0.721
+      objectReference: {fileID: 0}
     - target: {fileID: 419369709, guid: 10fafe517c4f54b4ab27c8a3655371ef, type: 3}
       propertyPath: m_Size.y
       value: 1
