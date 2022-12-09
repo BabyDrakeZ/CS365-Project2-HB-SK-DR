@@ -10,6 +10,7 @@ public class StartScene : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            Constants.C.playing = true;
             UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
         }
     }

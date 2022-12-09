@@ -6,8 +6,8 @@ public class Constants : MonoBehaviour
 {
     // Start is called before the first frame update
     static public Constants C;
-    public float timeCount;
-    public float highTime;
+    public float timeCount = 0;
+    public float highTime = 0;
     public bool playing = false;
     // Start is called before the first frame update
     void Start()
@@ -18,14 +18,19 @@ public class Constants : MonoBehaviour
             highTime = PlayerPrefs.GetFloat("highTime");
         }
     }
-
-        // Update is called once per frame
-    void Update()
+    public void UpdateTimer()
     {
         if (playing)
         {
             timeCount = Time.timeSinceLevelLoad;
             if (timeCount > highTime) highTime = timeCount;
         }
+    }
+
+        // Update is called once per frame
+    void Update()
+    {
+        Debug.Log(timeCount);
+        
     }
 }

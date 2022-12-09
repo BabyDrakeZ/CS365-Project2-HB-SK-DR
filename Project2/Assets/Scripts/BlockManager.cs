@@ -11,6 +11,8 @@ public class BlockManager : MonoBehaviour
     public float offset = 0;
     public int numColumns = 6;
     public GameObject[] bricks;
+    public TMPro.TMP_Text stopwatch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class BlockManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Constants.C.UpdateTimer();
+        stopwatch.text = Constants.C.timeCount.ToString("0.00");
     }
 }

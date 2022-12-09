@@ -11,14 +11,12 @@ public class PlayerShoot : MonoBehaviour
     public GameObject bulletPrefab;
     private GameObject shot;
     private PaddleMove paddle;
-    public TMP_Text stopwatch;
-    public float time=0f;
     
     // Start is called before the first frame update
     void Start()
     {
         paddle = GameObject.FindGameObjectWithTag("Player").GetComponent<PaddleMove>();
-        stopwatch.text = time.ToString("0.00");
+        
     }
 
     // Update is called once per frame
