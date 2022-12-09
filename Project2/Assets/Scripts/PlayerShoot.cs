@@ -57,7 +57,7 @@ public class PlayerShoot : MonoBehaviour
             Destroy(shot);
             paddleShot.SetActive(true);
             hasShot = false;
-            lives.text = "Press Enter to retrieve new ball. Lives: " + livescount;
+            //lives.text = "Press Enter to retrieve new ball. Lives: " + livescount;
         }
     }
 }

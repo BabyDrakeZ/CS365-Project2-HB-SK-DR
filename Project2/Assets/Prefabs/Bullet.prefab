@@ -107,7 +107,7 @@ MonoBehaviour:
   boundY: 14
   english: 0.5
   streakDecay: 1
-  streakMax: 5
+  streakMax: 7
   manager: {fileID: 0}
   bounceSound: {fileID: 0}
 --- !u!50 &3088779248159068234

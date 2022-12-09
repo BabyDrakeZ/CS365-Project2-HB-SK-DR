@@ -36,7 +36,7 @@ public class EnemyShoot : MonoBehaviour
             StartCoroutine(CoolDown());
 
             var euler = transform.eulerAngles;
-            euler.z = Random.Range(90, 180);
+            euler.z = Random.Range(110, 160);
             ShootPoint.transform.eulerAngles = euler;
         }
     }

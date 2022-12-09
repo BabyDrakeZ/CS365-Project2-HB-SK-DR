@@ -7,17 +7,20 @@ public class EnemyBullet : MonoBehaviour
 
     public Vector2 direction;
     public float speed = 5f;
+    public float duration = 6f;
 
     public ParticleSystem ImpactPS;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(Despawn());
+        
     }
     IEnumerator Despawn()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(duration);
+        Destroy(this.gameObject);
     }
 
     // Update is called once per frame
@@ -52,7 +55,6 @@ public class EnemyBullet : MonoBehaviour
 
             PaddleMove paddle = obj.GetComponent<PaddleMove>();
             paddle.Disable();
-            Destroy(this.gameObject);
         }
     }
     void Reflect(Vector3 normal)

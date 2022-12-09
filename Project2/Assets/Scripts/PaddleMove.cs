@@ -15,10 +15,12 @@ public class PaddleMove : MonoBehaviour
     private float maxLight;
     private bool lightOff = false;
     public float blinkTime = 0.5f;
+    private AudioSource blastSound;
     // Start is called before the first frame update
     void Start()
     {
         maxLight = paddleLight.intensity;
+        blastSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -64,6 +66,7 @@ public class PaddleMove : MonoBehaviour
     {
         Debug.Log("Player Disabled");
         if (!disabled) {
+            blastSound.PlayOneShot(blastSound.clip);
             StartCoroutine(DisablePaddle());
         }
     }
