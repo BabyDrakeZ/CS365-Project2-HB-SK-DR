@@ -108,6 +108,8 @@ MonoBehaviour:
   maxSpeed: 25
   bounds: 23
   lerpConstant: 0.05
+  disabled: 0
+  paddleLight: {fileID: 8580998966147147869}
 --- !u!114 &7592193383105125999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +125,8 @@ MonoBehaviour:
   angleDivisor: 7
   paddleShot: {fileID: 0}
   bulletPrefab: {fileID: 309133778232532587, guid: 309335dfac6518e4585854063f17c223, type: 3}
+  lives: {fileID: 0}
+  livescount: 0
 --- !u!50 &419369708
 Rigidbody2D:
   serializedVersion: 4

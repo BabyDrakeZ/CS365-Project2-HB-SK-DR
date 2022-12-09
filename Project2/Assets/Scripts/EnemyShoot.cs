@@ -31,7 +31,6 @@ public class EnemyShoot : MonoBehaviour
                 go.transform.position = ShootPoint.transform.position;
                 go.transform.rotation = ShootPoint.transform.rotation;
                 EnemyBullet b = go.GetComponent<EnemyBullet>();
-                b.speed = 5;
             }
 
             StartCoroutine(CoolDown());

@@ -13,10 +13,12 @@ public class BulletMove : MonoBehaviour
     private int streak = 0;
     public int streakMax = 5;
     public Manager manager;
+    public AudioSource bounceSound;
     // Start is called before the first frame update
     void Start()
     {
         DecayStreak();
+        bounceSound = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,7 +51,7 @@ public class BulletMove : MonoBehaviour
         Vector3 normal = this.transform.position - new Vector3(temp.x, temp.y, 0);
         Debug.Log("collision normal: " + normal.ToString());
         normal.Normalize();
-
+        bounceSound.PlayOneShot(bounceSound.clip);
         if (obj.tag == "Wall" || obj.tag == "WallTop")
         {
             Debug.Log("collision normal: " + normal.ToString());
@@ -61,7 +63,10 @@ public class BulletMove : MonoBehaviour
             //normal = new Vector3(script.actualSpeed + normal.x + obj.transform.position.x*english, 1, 0);
             //normal.Normalize();
             Debug.Log("collision normal2: " + normal.ToString());
-            this.direction = new Vector3(this.direction.x + (this.transform.position.x-obj.transform.position.x)*english, -this.direction.y, 0).normalized;
+            if (!obj.GetComponent<PaddleMove>().disabled)
+            {
+                this.direction = new Vector3(this.direction.x + (this.transform.position.x - obj.transform.position.x) * english, -this.direction.y, 0).normalized;
+            }
         }
         if (obj.tag == "Brick")
         {

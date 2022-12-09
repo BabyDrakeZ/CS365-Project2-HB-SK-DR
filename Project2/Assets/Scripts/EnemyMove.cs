@@ -30,11 +30,28 @@ public class EnemyMove : MonoBehaviour
         {
             inCoolDown = true;
             StartCoroutine(CoolDown());
-            int temp = Random.Range(1, 4);
-            if (temp == 1)
-                StartCoroutine(moveRight());
+            int temp = Random.Range(1, 3);
+            if (temp == 1) {
+                if (this.transform.position.x < -10)
+                {
+                    StartCoroutine(moveRight());
+                }
+                else
+                {
+                    StartCoroutine(moveLeft());
+                }
+            }
             if (temp == 2)
-                StartCoroutine(moveLeft());
+            {
+                if (this.transform.position.x > 10)
+                {
+                    StartCoroutine(moveLeft());
+                }
+                else
+                {
+                    StartCoroutine(moveRight());
+                }
+            }
         }
     }
     IEnumerator CoolDown()

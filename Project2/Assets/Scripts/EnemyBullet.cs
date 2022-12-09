@@ -10,19 +10,20 @@ public class EnemyBullet : MonoBehaviour
 
     public ParticleSystem ImpactPS;
 
-    private Vector3 BulletPosition;
-
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+    IEnumerator Despawn()
+    {
+        yield return new WaitForSeconds(5);
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
-        BulletPosition = this.transform.position;
     }
 
     private void Move()
@@ -40,30 +41,18 @@ public class EnemyBullet : MonoBehaviour
         Vector2 temp = collision.ClosestPoint(this.transform.position);
         Vector3 normal = this.transform.position - new Vector3(temp.x, temp.y, 0);
 
-        if (gameObject.tag == "Boundary")
-        {
-            ImpactPS = Instantiate(ImpactPS);
-            ImpactPS.transform.position = BulletPosition;
-            var euler = transform.eulerAngles;
-            euler.z = this.transform.rotation.eulerAngles.z;
-            ImpactPS.transform.eulerAngles = euler;
-            ImpactPS.Play();
-            Destroy(this.gameObject);
-        }
-
-
-
         if (gameObject.tag == "Player")
         {
-            ImpactPS = Instantiate(ImpactPS);
-            ImpactPS.transform.position = BulletPosition;
-            var euler = transform.eulerAngles;
-            euler.z = this.transform.rotation.eulerAngles.z;
-            ImpactPS.transform.eulerAngles = euler;
-            ImpactPS.Play();
+            //ImpactPS = Instantiate(ImpactPS);
+            //ImpactPS.transform.position = BulletPosition;
+            //var euler = transform.eulerAngles;
+            //euler.z = this.transform.rotation.eulerAngles.z;
+            //ImpactPS.transform.eulerAngles = euler;
+            //ImpactPS.Play();
 
+            PaddleMove paddle = obj.GetComponent<PaddleMove>();
+            paddle.Disable();
             Destroy(this.gameObject);
-
         }
     }
     void Reflect(Vector3 normal)
