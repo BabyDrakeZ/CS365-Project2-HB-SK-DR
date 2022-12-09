@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -10,11 +11,14 @@ public class PlayerShoot : MonoBehaviour
     public GameObject bulletPrefab;
     private GameObject shot;
     private PaddleMove paddle;
+    public TMP_Text lives;
+    public int livescount;
     
     // Start is called before the first frame update
     void Start()
     {
         paddle = GameObject.FindGameObjectWithTag("Player").GetComponent<PaddleMove>();
+        lives.text = "lives: " + livescount;
     }
 
     // Update is called once per frame
@@ -24,7 +28,10 @@ public class PlayerShoot : MonoBehaviour
         if (bulletDestroyCase)
             BulletReset();
         if (Input.GetKeyDown(KeyCode.Space))
-            Shoot();    
+        {
+            Shoot();
+            lives.text = "lives: " + livescount;
+        }
     }
     void Shoot()
     {
@@ -50,6 +57,7 @@ public class PlayerShoot : MonoBehaviour
             Destroy(shot);
             paddleShot.SetActive(true);
             hasShot = false;
+            lives.text = "Press Enter to retrieve new ball. Lives: " + livescount;
         }
     }
 }
