@@ -27,6 +27,7 @@ public class GameOverScene : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("StartScene");
+            
         }
 
     }
