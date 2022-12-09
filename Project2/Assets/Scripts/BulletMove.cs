@@ -87,6 +87,7 @@ public class BulletMove : MonoBehaviour
         {
             Reflect(normal);
             Destroy(obj);
+            paddle.blocksBroken++;
             if (streak < streakMax)
                 streak++;
         }

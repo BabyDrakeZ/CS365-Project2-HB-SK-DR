@@ -566,6 +566,17 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &918375342 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8580998965803520754, guid: 10fafe517c4f54b4ab27c8a3655371ef, type: 3}
+  m_PrefabInstance: {fileID: 8580998966199025688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d8e2c65d7a2884484be2ec3c479e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &982355543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,7 +1132,9 @@ MonoBehaviour:
   - {fileID: 4624959455580940478, guid: 6df815f5f8c6c8243a00426db1e8b2e6, type: 3}
   - {fileID: 6399316697753939744, guid: e6135f2495a966046a9689e6bd99de23, type: 3}
   - {fileID: 6399316697753939744, guid: e6135f2495a966046a9689e6bd99de23, type: 3}
+  paddle: {fileID: 918375342}
   stopwatch: {fileID: 1299174758}
+  blocksRequired: 108
 --- !u!4 &1534682466
 Transform:
   m_ObjectHideFlags: 0

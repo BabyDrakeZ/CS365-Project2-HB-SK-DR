@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeCount: 0
-  highTime: 0
+  highTime: 100000
   playing: 0
 --- !u!1 &1350428804
 GameObject:

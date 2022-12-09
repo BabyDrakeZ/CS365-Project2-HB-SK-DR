@@ -13,6 +13,7 @@ public class BlockManager : MonoBehaviour
     public GameObject[] bricks;
     public PaddleMove paddle;
     public TMPro.TMP_Text stopwatch;
+    public int blocksRequired = 108;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,9 @@ public class BlockManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (paddle.GetComponent<PaddleMove>().blocksBroken >= 108)
+        if (paddle.GetComponent<PaddleMove>().blocksBroken >= blocksRequired)
         {
+            Constants.C.EndTimer();
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
         }
         Constants.C.UpdateTimer();
