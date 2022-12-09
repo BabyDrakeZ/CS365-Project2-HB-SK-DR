@@ -11,9 +11,17 @@ public class EnemyShoot : MonoBehaviour
 
     private bool inCoolDown = false;
     public float coolDown = 5;
+    public float difficultyRate = 5;
+    public float coolDownAcceleration = 0.05f;
     void Start()
     {
-
+        StartCoroutine(DifficultyRamp());
+    }
+    IEnumerator DifficultyRamp()
+    {
+        yield return new WaitForSeconds(difficultyRate);
+        coolDown -= coolDownAcceleration;
+        StartCoroutine(DifficultyRamp());
     }
 
     // Update is called once per frame
@@ -36,7 +44,7 @@ public class EnemyShoot : MonoBehaviour
             StartCoroutine(CoolDown());
 
             var euler = transform.eulerAngles;
-            euler.z = Random.Range(110, 160);
+            euler.z = Random.Range(120, 240);
             ShootPoint.transform.eulerAngles = euler;
         }
     }
@@ -45,5 +53,6 @@ public class EnemyShoot : MonoBehaviour
     {
         yield return new WaitForSeconds(coolDown);
         inCoolDown = false;
+        coolDown = Mathf.Max(0, coolDown);
     }
 }

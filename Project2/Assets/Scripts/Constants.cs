@@ -8,7 +8,7 @@ public class Constants : MonoBehaviour
     static public Constants C;
     public float timeCount;
     public float highTime;
-    
+    public bool playing = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +19,10 @@ public class Constants : MonoBehaviour
         // Update is called once per frame
     void Update()
     {
-        
+        if (playing)
+        {
+            timeCount = Time.timeSinceLevelLoad;
+            if (timeCount > highTime) highTime = timeCount;
+        }
     }
 }
