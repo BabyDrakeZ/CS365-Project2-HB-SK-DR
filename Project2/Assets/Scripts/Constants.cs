@@ -6,8 +6,8 @@ public class Constants : MonoBehaviour
 {
     // Start is called before the first frame update
     static public Constants C;
-    public Time timeCount;
-    public Time highTime;
+    public float timeCount;
+    public float highTime;
     
     // Start is called before the first frame update
     void Start()
