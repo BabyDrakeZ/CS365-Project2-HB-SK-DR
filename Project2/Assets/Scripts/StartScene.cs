@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class StartScene : MonoBehaviour
 {
-    public GameObject Player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Player = Instantiate(Player);
-        Player.transform.position = new Vector3(-20, 0, 0);
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKey(KeyCode.Space))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        }
     }
 }
